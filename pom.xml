@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.sunstorm</groupId>
+    <artifactId>sass-maven-plugin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+
+    <name>SASS Compiler Plugin</name>
+    <description>Maven Plugin that compiles SASS files</description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jruby.version>9.4.2.0</jruby.version>
+        <compass.version>1.0.3</compass.version>
+        <inotify.version>0.10.1</inotify.version>
+        <fsevent.version>0.11.2</fsevent.version>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git://github.com/MrExplode/sass-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:MrExplode/sass-maven-plugin.git</developerConnection>
+        <url>https://github.com/MrExplode/sass-maven-plugin</url>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>mavengems</id>
+            <url>mavengem:https://rubygems.org/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby-complete</artifactId>
+            <version>${jruby.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>compass</artifactId>
+            <version>${compass.version}</version>
+            <type>gem</type>
+        </dependency>
+        <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>rb-inotify</artifactId>
+            <version>${inotify.version}</version>
+            <type>gem</type>
+        </dependency>
+        <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>rb-fsevent</artifactId>
+            <version>${fsevent.version}</version>
+            <type>gem</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.torquebox.mojo</groupId>
+                <artifactId>mavengem-wagon</artifactId>
+                <version>1.0.3</version>
+            </extension>
+        </extensions>
+        <resources>
+            <resource>
+                <directory>target/rubygems</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>bin/**</exclude>
+                    <exclude>cache/**</exclude>
+                    <exclude>doc/**</exclude>
+                    <exclude>**/spec/**</exclude>
+                    <exclude>**/test/**</exclude>
+                    <exclude>**/examples/**</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>de.saumya.mojo</groupId>
+                <artifactId>gem-maven-plugin</artifactId>
+                <version>2.0.1</version>
+                <executions>
+                    <execution>
+                        <id>install-gems</id>
+                        <goals>
+                            <goal>initialize</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <installRDoc>false</installRDoc>
+                    <installRI>false</installRI>
+                    <includeOpenSSL>false</includeOpenSSL>
+                    <includeRubygemsInTestResources>false</includeRubygemsInTestResources>
+                    <jrubyVersion>${jruby.version}</jrubyVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.mave.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.8.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
