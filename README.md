@@ -7,12 +7,12 @@ Java 17 or later
 
 ## Usage
 ```xml
-<repositories>
-    <repository>
+<pluginRepositories>
+    <pluginRepository>
         <id>jitpack</id>
         <url>https://jitpack.io</url>
-    </repository>
-</repositories>
+    </pluginRepository>
+</pluginRepositories>
 ```
 ```xml
 <plugin>
