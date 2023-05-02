@@ -18,7 +18,7 @@ Java 17 or later
 <plugin>
     <groupId>com.github.MrExplode</groupId>
     <artifactId>sass-maven-plugin</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <configuration>
         <sassSourceDirectory>path to your sass files</sassSourceDirectory>
         <destination>where the compiled css files will go</destination>
