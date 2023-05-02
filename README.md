@@ -1,4 +1,4 @@
-# sass-maven-plugin
+# sass-maven-plugin [![Release](https://jitpack.io/v/MrExplode/sass-maven-plugin.svg)](https://jitpack.io/#MrExplode/sass-maven-plugin)
 
 This is a detached, modernized fork of [Jasig/sass-maven-plugin](https://github.com/Jasig/sass-maven-plugin).
 
@@ -18,7 +18,7 @@ Java 17 or later
 <plugin>
     <groupId>com.github.MrExplode</groupId>
     <artifactId>sass-maven-plugin</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <configuration>
         <sassSourceDirectory>path to your sass files</sassSourceDirectory>
         <destination>where the compiled css files will go</destination>

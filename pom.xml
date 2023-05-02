@@ -6,7 +6,7 @@
 
     <groupId>me.sunstorm</groupId>
     <artifactId>sass-maven-plugin</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>maven-plugin</packaging>
 
     <name>SASS Compiler Plugin</name>
@@ -115,7 +115,7 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.mave.plugins</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
                 <version>3.8.2</version>
             </plugin>
